@@ -1,0 +1,92 @@
+@jwt = eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2MzQ1OTY5MzZ9.vfRQckyKEMHEosHEh36NDdShiSI0ow3JVvvSGgB2MMQ
+
+### product index
+get http://localhost:3000/products/
+Authorization: Bearer {{jwt}}
+### product create
+post http://localhost:3000/products/
+Content-Type: application/json
+Authorization: Bearer {{jwt}}
+
+{
+  "name":"cool cup",
+  "price":5,
+  "description": "a cup to drink stuff",
+  "supplier_id": 1
+}
+###product show
+get http://localhost:3000/products/1
+
+###producct update
+patch http://localhost:3000/products/8
+Content-Type: application/json
+Authorization: Bearer {{jwt}}
+
+{ 
+  "description":"extra super fancy cup",
+  "price": 17.00
+
+}
+###product delete
+DELETE http://localhost:3000/products/8
+
+
+### Users create (signup)
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+  "name": "Leo",
+  "email": "Leo@mail.com.com",
+  "password": "password",
+  "password_confirmation": "password"
+}
+
+### Sessions create (login)
+POST http://localhost:3000/sessions
+Content-Type: application/json
+
+{
+  "email": "sterling@mail.com.com",
+  "password": "password"
+}
+
+### orders create 
+POST http://localhost:3000/orders
+Content-Type: application/json
+Authorization: Bearer {{jwt}}
+
+{
+"product_id": 6,
+"quantity": 1
+}
+
+### orders show
+get http://localhost:3000/orders/2
+Content-Type: application/json
+Authorization: Bearer {{jwt}}
+
+### orders index
+GET http://localhost:3000/orders
+Content-Type: application/json
+Authorization: Bearer {{jwt}}
+
+###carted products index
+GET http://localhost:3000/carted_products
+Content-Type: application/json
+Authorization: Bearer {{jwt}}
+
+###carted products create
+POST http://localhost:3000/carted_products
+Content-Type: application/json
+Authorization: Bearer {{jwt}}
+
+{
+"product_id":6,
+"quantity": 1
+}
+
+###carted products update
+PATCH http://localhost:3000/carted_products/6
+Content-Type: application/json
+Authorization: Bearer {{jwt}}

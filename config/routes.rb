@@ -1,9 +1,19 @@
 Rails.application.routes.draw do
- get "/all_products", controller: "products", action: "all"
+  get "/products" => "products#index"
+  post "/products" => "products#create"
+  get "/products/:id" => "products#show"
+  patch "/products/:id" => "products#update"
+  delete "/products/:id" => "products#destroy"
 
- get "/headphones", controller: "products", action: "headphones"
+  post "/users" => "users#create"
+  post "/sessions" => "sessions#create"
 
- get "/hats", controller: "products", action: "hats"
+  get "/orders" => "orders#index"
+  post "/orders" => "orders#create"
+  get "/orders/:id" => "orders#show"
 
- get "/books", controller: "products", action: "books"
+  get "/carted_products" => "carted_products#index"
+  post "/carted_products" => "carted_products#create"
+  patch "/carted_products/:id" => "carted_products#update"
+
 end
